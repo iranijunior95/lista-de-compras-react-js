@@ -1,0 +1,22 @@
+.input-default {
+    height: 44px;
+    padding: 0 1.125rem;
+    border: 2px solid var(--border-primary);
+    border-radius: 0.75rem;
+    outline: 0;
+    font-size: 1rem;
+    background: var(--background-secondary);
+    color: var(--content-primar);
+}
+
+.input-default::placeholder {
+    color: var(--content-tertiary);
+}
+
+.input-default:hover {
+    border-color: var(--border-hover);
+}
+
+.input-default:focus {
+    border-color: var(--color-brand);
+}
