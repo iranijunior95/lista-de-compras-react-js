@@ -1,11 +1,12 @@
+import ButtonDefault from './components/ButtonDefault';
 import './App.css'
 
 function App() {
 
   return (
-    <>
-     hello word
-    </>
+    <div className='container'>
+      <ButtonDefault></ButtonDefault>
+    </div>
   );
 }
 

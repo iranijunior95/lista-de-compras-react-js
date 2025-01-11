@@ -1,0 +1,18 @@
+.btn-default {
+    padding: 0.625rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.75rem;
+    background: var(--color-brand);
+    color: var(--background-secondary);
+    cursor: pointer;
+}
+
+.btn-default:hover {
+    background: var(--color-brand-hover);
+}
+
+.btn-default:active {
+    transform: scale(0.97);
+}
