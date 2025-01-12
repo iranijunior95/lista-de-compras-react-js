@@ -6,11 +6,7 @@ import ItemList from './components/ItemList';
 import './App.css'
 
 function App() {
-  const [listaDeCompras, setListaDeCompras] = useState([{
-    id: 1,
-    detalhes: 'test',
-    checked: false
-  }]);
+  const [listaDeCompras, setListaDeCompras] = useState([]);
   const [detalhes, setDetalhes] = useState('');
 
   function onChangeDetalhes(detalhes) {
@@ -25,10 +21,12 @@ function App() {
     }
 
     const newItem = {
-      id: listaDeCompras.length+1,
+      id: listaDeCompras.length + Math.floor(Math.random() * (10000 * listaDeCompras.length)),
       detalhes: detalhes,
       checked: false
     };
+
+    console.log(listaDeCompras.length + Math.floor(Math.random() * (10000 * listaDeCompras.length)))
 
     setListaDeCompras([...listaDeCompras, newItem]);
     setDetalhes('');  
