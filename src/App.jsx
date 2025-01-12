@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import IconLogo from './assets/img/icon-logo.png';
 import InputDefault from './components/InputDefault';
 import ButtonDefault from './components/ButtonDefault';
@@ -5,6 +6,32 @@ import ItemList from './components/ItemList';
 import './App.css'
 
 function App() {
+  const [listaDeCompras, setListaDeCompras] = useState([
+    {
+      id: 1,
+      detalhes: 'Açucar Demerara',
+      checked: true
+    },
+
+    {
+      id: 2,
+      detalhes: 'Arroz Branco',
+      checked: false
+    },
+  ]);
+
+  function onCheckedItem(id_item) {
+    const newLista = listaDeCompras.map((item) => {
+      if(item.id === id_item) {
+        return { ...item, checked: !item.checked }
+      }
+
+      return item;
+    });
+
+    setListaDeCompras(newLista);
+  }
+
   return (
     <div className='container'>
       <header>
@@ -23,11 +50,13 @@ function App() {
         </section>
 
         <section className='section-list-compras'>
-          <ItemList></ItemList>
-
-          <ItemList></ItemList>
-
-          <ItemList></ItemList>
+          {listaDeCompras.map((item) => (
+            <ItemList
+              key={item.id}
+              lista={item}
+              onCheckedItem={onCheckedItem}
+            />
+          ))}
         </section>
       </main>
     </div>
