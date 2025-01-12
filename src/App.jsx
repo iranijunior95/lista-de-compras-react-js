@@ -6,19 +6,23 @@ import ItemList from './components/ItemList';
 import './App.css'
 
 function App() {
-  const [listaDeCompras, setListaDeCompras] = useState([
-    {
-      id: 1,
-      detalhes: 'Açucar Demerara',
-      checked: true
-    },
+  const [listaDeCompras, setListaDeCompras] = useState([]);
+  const [detalhes, setDetalhes] = useState('');
 
-    {
-      id: 2,
-      detalhes: 'Arroz Branco',
+  function onChangeDetalhes(detalhes) {
+    setDetalhes(detalhes);
+  }
+
+  function addItemLista() {
+    const newItem = {
+      id: listaDeCompras.length+1,
+      detalhes: detalhes,
       checked: false
-    },
-  ]);
+    };
+
+    setListaDeCompras([...listaDeCompras, newItem]);
+    setDetalhes('');  
+  }
 
   function onCheckedItem(id_item) {
     const newLista = listaDeCompras.map((item) => {
@@ -45,8 +49,14 @@ function App() {
         <h1>Compras da semana</h1>
 
         <section className='section-form'>
-          <InputDefault />
-          <ButtonDefault></ButtonDefault>
+          <InputDefault
+            detalhes={detalhes} 
+            onChangeDetalhes={onChangeDetalhes}
+          />
+
+          <ButtonDefault 
+            addItemLista={addItemLista}
+          />
         </section>
 
         <section className='section-list-compras'>

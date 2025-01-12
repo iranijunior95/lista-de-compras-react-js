@@ -1,6 +1,6 @@
 import './style.css';
 
-function InputDefault() {
+function InputDefault({ detalhes, onChangeDetalhes }) {
     return (
         <input 
             type="text" 
@@ -8,6 +8,8 @@ function InputDefault() {
             id="input-default"
             className='input-default'
             placeholder='Adicione um novo item'
+            value={detalhes}
+            onChange={(event) => onChangeDetalhes(event.target.value)}
         />
     );
 }

@@ -1,10 +1,11 @@
 import './style.css';
 
-function ButtonDefault() {
+function ButtonDefault({ addItemLista }) {
     return (
         <button 
             type="button"
             className='btn-default'
+            onClick={(event) => addItemLista()}
             >Adicionar item</button>
     );
 }
