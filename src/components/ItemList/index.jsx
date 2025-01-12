@@ -2,7 +2,7 @@ import CheckBoxDefault from '../CheckBoxDefault';
 import IconTrash from '../../assets/img/icon-trash.svg';
 import './style.css';
 
-function ItemList({lista, onCheckedItem}) {
+function ItemList({ lista, onCheckedItem, onDeleteItem }) {
     return(
         <div className='item-list'>
             <CheckBoxDefault
@@ -13,7 +13,10 @@ function ItemList({lista, onCheckedItem}) {
 
             <p>{lista.detalhes}</p>
 
-            <button type="button">
+            <button 
+                type="button"
+                onClick={(event) => onDeleteItem(lista.id)}
+            >
                 <img src={IconTrash} alt="icone trash" />
             </button>
         </div>

@@ -6,7 +6,11 @@ import ItemList from './components/ItemList';
 import './App.css'
 
 function App() {
-  const [listaDeCompras, setListaDeCompras] = useState([]);
+  const [listaDeCompras, setListaDeCompras] = useState([{
+    id: 1,
+    detalhes: 'test',
+    checked: false
+  }]);
   const [detalhes, setDetalhes] = useState('');
 
   function onChangeDetalhes(detalhes) {
@@ -14,6 +18,12 @@ function App() {
   }
 
   function addItemLista() {
+    if(detalhes.trim() === '') {
+      
+      setDetalhes(''); 
+      return;
+    }
+
     const newItem = {
       id: listaDeCompras.length+1,
       detalhes: detalhes,
@@ -34,6 +44,18 @@ function App() {
     });
 
     setListaDeCompras(newLista);
+  }
+
+  function onDeleteItem(id_item) {
+    const newLista = listaDeCompras;
+
+    newLista.map((item, index) => {
+      if(item.id === id_item) {
+        newLista.splice(index, 1);
+      }
+    });
+
+    setListaDeCompras([ ...newLista ]);
   }
 
   return (
@@ -60,13 +82,14 @@ function App() {
         </section>
 
         <section className='section-list-compras'>
-          {listaDeCompras.map((item) => (
-            <ItemList
-              key={item.id}
-              lista={item}
-              onCheckedItem={onCheckedItem}
-            />
-          ))}
+            {listaDeCompras.map((item) => (
+              <ItemList
+                key={item.id}
+                lista={item}
+                onCheckedItem={onCheckedItem}
+                onDeleteItem={onDeleteItem}
+              />
+            ))}
         </section>
       </main>
     </div>
